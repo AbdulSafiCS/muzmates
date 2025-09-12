@@ -23,7 +23,8 @@
         "NSPhotoLibraryUsageDescription": "We need access to your photo library to let you upload listing photos.",
         "NSPhotoLibraryAddUsageDescription": "We need access to save photos.",
         "NSCameraUsageDescription": "We need access to your camera to take listing photos.",
-        "NSLocationWhenInUseUsageDescription": "We use your location to show nearby listings (optional)."
+        "NSLocationWhenInUseUsageDescription": "We use your location to show nearby listings (optional).",
+        "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {

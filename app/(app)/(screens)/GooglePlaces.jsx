@@ -41,11 +41,11 @@ export default function GooglePlaces() {
         formattedAddress = addressText;
 
       if (placeId) {
-        const key = GOOGLE_PLACES_KEY;
+        //const key = GOOGLE_PLACES_KEY;
         const url =
           `https://places.googleapis.com/v1/places/${placeId}` +
           `?fields=location,formattedAddress,displayName` +
-          `&key=${encodeURIComponent(key)}`;
+          `&key=${GOOGLE_PLACES_KEY}`;
 
         const res = await fetch(url, { method: "GET" });
         if (res.ok) {
