@@ -1,0 +1,28 @@
+{
+  "cli": {
+    "version": ">= 14.0.0"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "ios": { "simulator": false }
+    },
+    "preview": {
+      "distribution": "internal",
+      "ios": { "simulator": false }
+    },
+    "production": {
+      "distribution": "store",
+      "ios": { "simulator": false }
+    }
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "appleId": "hasibsaf90@gmail.com",
+        "ascAppId": "6752446631"
+      }
+    }
+  }
+}
