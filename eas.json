@@ -14,7 +14,12 @@
     },
     "production": {
       "distribution": "store",
-      "ios": { "simulator": false }
+      "ios": {
+        "simulator": false,
+        "env": {
+          "RCT_NEW_ARCH_ENABLED": "0"
+        }
+      }
     }
   },
   "submit": {
