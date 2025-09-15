@@ -1,6 +1,6 @@
 import { router } from "expo-router";
 import { useVideoPlayer, VideoView } from "expo-video";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Image,
   StatusBar,
@@ -24,6 +24,11 @@ export default function WelcomeScreen() {
   );
   const { isAuthenticated } = useAuth();
   const [isLoading, setIsLoading] = useState(true); // State to manage loading
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.replace("Profile");
+    }
+  }, [isAuthenticated]);
 
   return (
     <View style={styles.container}>
