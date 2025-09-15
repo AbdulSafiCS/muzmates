@@ -36,7 +36,6 @@ const EditListing = () => {
   const [listings, setListings] = useState([]);
   const [numberOfBaths, setNumberOfBaths] = useState(0);
   const [numberOfBeds, setNumberOfBeds] = useState(0);
-
   const navigation = useNavigation();
   const [listingDescription, setListingDescription] = useState("");
   const CHARACTER_LIMIT = 500;
