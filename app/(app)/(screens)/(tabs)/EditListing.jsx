@@ -36,7 +36,7 @@ const EditListing = () => {
   const [listings, setListings] = useState([]);
   const [numberOfBaths, setNumberOfBaths] = useState(0);
   const [numberOfBeds, setNumberOfBeds] = useState(0);
-  //const GOOGLE_PLACES_API_KEY = "AIzaSyA6_hyOAO4oUzymekXLQo20aPsRp54DpTw";
+
   const navigation = useNavigation();
   const [listingDescription, setListingDescription] = useState("");
   const CHARACTER_LIMIT = 500;
@@ -56,12 +56,6 @@ const EditListing = () => {
   const incrementBaths = () => setNumberOfBaths((prev) => prev + 1);
   const decrementBaths = () =>
     setNumberOfBaths((prev) => Math.max(0, prev - 1));
-
-  // useEffect(() => {
-  //   if (user) {
-  //     fetchUser();
-  //   }
-  // }, [user]);
 
   useEffect(() => {
     const fetchListings = async () => {
