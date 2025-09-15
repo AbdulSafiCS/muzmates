@@ -79,7 +79,7 @@ export default function GooglePlaces() {
 
           <View style={styles.inputWrap}>
             <GooglePlacesTextInput
-              apiKey="AIzaSyA6_hyOAO4oUzymekXLQo20aPsRp54DpTw"
+              apiKey={GOOGLE_PLACES_KEY}
               placeHolderText="Search for a city..."
               showClearButton
               onPlaceSelect={handlePlaceSelect}
