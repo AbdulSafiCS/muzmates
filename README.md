@@ -1,50 +1,45 @@
-# Welcome to your Expo app 👋
+#Muzmates
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern roommate & housing marketplace built with React Native (Expo) and Firebase.
 
-## Get started
+##Description
 
-1. Install dependencies
+Muzmates lets users browse, create, and manage room/house listings with real-time updates. It uses Firebase Authentication, Firestore, and Storage for profiles and listings, plus Google Places Autocomplete for clean address entry. The UI is mobile-first with an image gallery, clean forms, and toast notifications.
 
-   ```bash
-   npm install
-   ```
+##Key Features
 
-2. Start the app
+1. Authentication
+2. Email & password
+3. Phone (SMS) sign-in (see setup notes below not yet ready0
+4. Realtime data with Firestore (users, listings)
+5. CRUD for listings (create, edit, browse)
+6. Image uploads to Firebase Storage (profile & listing photos)
+7. Address input with Google Places Autocomplete
+8. Image gallery with swipeable navigation
+9. Notifications via react-native-toast-message
+10. Expo Router & Context-based AuthContext for clean state management
+11. Responsive UI with react-native-responsive-screen and icon packs (Ionicons, AntDesign)
 
-   ```bash
-   npx expo start
-   ```
 
-In the output, you'll find options to open the app in a
+#Why?
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Finding a compatible roommate or the right rental is hard. Muzmates streamlines the process with a focused mobile experience, real-time syncing, and straightforward tools to create and manage listings.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+#Tech Stack
 
-## Get a fresh project
+1. App: React Native (Expo)
+2. Navigation: Expo Router
+3. State/Auth: React Context + Firebase Auth
+4. Database: Firebase Firestore
+5. Storage: Firebase Storage
+6. Places: react-native-google-places-autocomplete (Google Maps Platform)
+7. UI Utils: react-native-responsive-screen, react-native-toast-message, @expo/vector-icons
 
-When you're ready, run:
+8. ```bash
+git clone https://github.com/AbdulSafiCS/muzmates.git
+cd muzmates
 
 ```bash
-npm run reset-project
-```
+git clone https://github.com/AbdulSafiCS/muzmates.git
+cd muzmates
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
