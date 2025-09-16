@@ -4,7 +4,6 @@ import { useState } from "react";
 import {
   Alert,
   Image,
-  SafeAreaView,
   StatusBar,
   StyleSheet,
   TextInput,
@@ -12,6 +11,7 @@ import {
   View,
 } from "react-native";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import { SafeAreaView } from "react-native-safe-area-context";
 import Toast from "react-native-toast-message";
 import defaultProfileImage from "../../../../assets/images/bismillah.png";
 import Loading from "../../../../components/Loading.jsx";

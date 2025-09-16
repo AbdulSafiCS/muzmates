@@ -243,11 +243,10 @@ const styles = StyleSheet.create({
   innerContainer: {
     flex: 1,
     gap: 12,
-    //paddingTop: hp(5),
     paddingHorizontal: wp(5),
   },
   imageWrapper: {
-    //paddingTop: hp(4),
+    marginTop: hp(2),
     justifyContent: "center",
     alignItems: "center",
   },

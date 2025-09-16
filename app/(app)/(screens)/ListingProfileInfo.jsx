@@ -1,5 +1,6 @@
 import AntDesign from "@expo/vector-icons/AntDesign";
-import { SafeAreaView, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import Text from "../../../components/Text";
 
 const ListingProfileInfo = () => {

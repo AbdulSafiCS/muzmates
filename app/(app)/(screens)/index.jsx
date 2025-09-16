@@ -40,12 +40,12 @@ export default function WelcomeScreen() {
       />
 
       <VideoView
-        style={StyleSheet.absoluteFillObject} // covers the entire parent
+        style={StyleSheet.absoluteFillObject}
         player={player}
-        nativeControls={false} // no play/pause UI
-        allowsFullscreen={false}
+        nativeControls={false}
+        fullscreenOptions={{ enabled: false }}
         allowsPictureInPicture={false}
-        contentFit="cover" // like background-size: cover
+        contentFit="cover"
         onFirstFrameRender={() => setIsLoading(false)}
       />
       {isLoading ? (
