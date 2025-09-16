@@ -61,7 +61,10 @@ export default function WelcomeScreen() {
           />
           <View style={styles.buttonContainer}>
             <Text style={styles.loginText}>LOG IN WITH</Text>
-            <TouchableOpacity style={styles.submitButton}>
+            <TouchableOpacity
+              style={styles.submitButton}
+              onPress={() => router.navigate("SignInPhone")}
+            >
               <Text style={styles.buttonText}>PHONE NUMBER</Text>
             </TouchableOpacity>
             <TouchableOpacity

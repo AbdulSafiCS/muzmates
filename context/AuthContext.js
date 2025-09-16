@@ -3,9 +3,11 @@ import { router } from "expo-router";
 import {
   createUserWithEmailAndPassword,
   deleteUser,
+  getAuth,
   onAuthStateChanged,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
+  signInWithPhoneNumber,
   signOut,
 } from "firebase/auth";
 import {
@@ -44,6 +46,11 @@ export const AuthContextProvider = ({ children }) => {
   const [allListings, setAllListings] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
   const [listingsWithUserData, setListingsWithUserData] = useState([]);
+  const [phoneConfirmation, setPhoneConfirmation] = useState(null);
+  const auth = getAuth();
+  auth.languageCode = "it";
+  const [phoneNumber, setPhoneNumber] = useState("");
+  //const appVerifier = window.recaptchaVerifier;
 
   // --- Auth state ---
   useEffect(() => {
@@ -60,7 +67,7 @@ export const AuthContextProvider = ({ children }) => {
     return unsub;
   }, []);
 
-  // --- Current user realtime subscription ---
+  // Current user realtime subscription
   useEffect(() => {
     if (!user?.uid) {
       setCurrentUser([]);
@@ -97,7 +104,7 @@ export const AuthContextProvider = ({ children }) => {
     return unsub;
   }, []);
 
-  // --- All users realtime subscription (with docId) ---
+  // All users realtime subscription (with docId)
   useEffect(() => {
     const unsub = onSnapshot(
       collection(FIRESTORE_DB, "users"),
@@ -110,7 +117,7 @@ export const AuthContextProvider = ({ children }) => {
     return unsub;
   }, []);
 
-  // --- Merge listings + users ---
+  // Merge listings + users
   useEffect(() => {
     const merged = allListings.map((listing) => {
       // Your listing has field `id` = user.uid at creation time
@@ -120,7 +127,7 @@ export const AuthContextProvider = ({ children }) => {
     setListingsWithUserData(merged);
   }, [allUsers, allListings]);
 
-  // --- Auth API ---
+  //  Auth API
   const login = async (emailAddress, password) => {
     try {
       await signInWithEmailAndPassword(FIREBASE_AUTH, emailAddress, password);
@@ -131,6 +138,45 @@ export const AuthContextProvider = ({ children }) => {
         msg = "please enter a valid email";
       if (msg.includes("(auth/invalid-credential)"))
         msg = "incorrect credentials, please try again";
+      return { success: false, msg };
+    }
+  };
+
+  const loginPhone = async (authInstance, phoneNumber, appVerifier) => {
+    try {
+      if (!phoneNumber)
+        return { success: false, msg: "Phone number required." };
+      if (!appVerifier) return { success: false, msg: "reCAPTCHA not ready." };
+
+      const confirmation = await signInWithPhoneNumber(
+        authInstance || FIREBASE_AUTH,
+        phoneNumber,
+        appVerifier
+      );
+      setPhoneConfirmation(confirmation);
+      return { success: true };
+    } catch (e) {
+      let msg = e?.message || "Failed to send verification code.";
+      if (msg.includes("auth/invalid-phone-number"))
+        msg = "Invalid phone number.";
+      if (msg.includes("auth/too-many-requests"))
+        msg = "Too many attempts. Try later.";
+      return { success: false, msg };
+    }
+  };
+
+  const confirmPhoneCode = async (code) => {
+    try {
+      if (!phoneConfirmation)
+        return { success: false, msg: "No verification in progress." };
+      const cred = await phoneConfirmation.confirm(code);
+      setPhoneConfirmation(null);
+      return { success: true, user: cred.user };
+    } catch (e) {
+      let msg = e?.message || "Invalid code.";
+      if (msg.includes("auth/invalid-verification-code")) msg = "Invalid code.";
+      if (msg.includes("auth/code-expired"))
+        msg = "Code expired. Send a new one.";
       return { success: false, msg };
     }
   };
@@ -343,6 +389,7 @@ export const AuthContextProvider = ({ children }) => {
         user,
         isAuthenticated,
         login,
+        loginPhone,
         register,
         logout,
         resetPassword,
@@ -350,6 +397,10 @@ export const AuthContextProvider = ({ children }) => {
         loading,
         setLoading,
         deleteAccount,
+        auth,
+        phoneNumber,
+        setPhoneNumber,
+        confirmPhoneCode,
 
         // listing helpers
         listingImagePicker,

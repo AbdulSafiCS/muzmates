@@ -268,7 +268,7 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: "flex-start", // not center
     alignItems: "center",
-    paddingTop: 50,
+    //paddingTop: 50,
     paddingHorizontal: 30,
     backgroundColor: "#fefefe",
   },

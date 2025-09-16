@@ -1,9 +1,9 @@
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
-import React, { useState } from "react";
-import { useNavigation } from "@react-navigation/native";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const Listing = ({
   listingId,
@@ -56,7 +56,7 @@ const Listing = ({
           disabled={currentImageIndex === 0}
         >
           <Text style={styles.arrowText}>
-            {<AntDesign name="caretleft" size={24} color="white" />}
+            {<AntDesign name="left" size={24} color="white" />}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.photo} onPress={handleImagePress}>
@@ -72,7 +72,7 @@ const Listing = ({
           disabled={currentImageIndex === listingImages.length - 1}
         >
           <Text style={styles.arrowText}>
-            {<AntDesign name="caretright" size={24} color="white" />}
+            {<AntDesign name="right" size={24} color="white" />}
           </Text>
         </TouchableOpacity>
       </View>
@@ -151,7 +151,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 14,
     fontWeight: "bold",
-    
   },
   imageContainer: {
     flexDirection: "row",
