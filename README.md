@@ -10,7 +10,7 @@ Muzmates lets users browse, create, and manage room/house listings with real-tim
 
 1. Authentication
 2. Email & password
-3. Phone (SMS) sign-in (see setup notes below not yet ready0
+3. Phone (SMS) sign-in (see setup notes below not yet ready
 4. Realtime data with Firestore (users, listings)
 5. CRUD for listings (create, edit, browse)
 6. Image uploads to Firebase Storage (profile & listing photos)
